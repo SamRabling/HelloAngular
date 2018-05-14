@@ -8,10 +8,11 @@ app.use(bodyParser.json()); //this
 app.use(express.static(__dirname + '/angular/dist/angular'));
 
 
+
 //mongoose
 require("./server/config/mongoose");
 //routes
-require("./server/config/routes")(app) //this
+require("./server/config/routes.js")(app) //this
 
 //port
 app.listen(5000, function () {

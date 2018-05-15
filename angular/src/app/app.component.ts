@@ -1,28 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpService } from './http.service';
-import { ENGINE_METHOD_PKEY_ASN1_METHS } from 'constants';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'app';
   tasks = [];
-  showTasks = {};
+  showTask = {};
 
 
   constructor(private _httpService: HttpService) {}
-  ngOnInit() {
-      this.tasksFromService();
-    }
-  tasksFromService() {
+  tasksFromService(): void {
     const observable = this._httpService.getTasks();
     observable.subscribe(data => {
       console.log('Here are our tasks!', data);
       this.tasks = data['data'];
     });
+  }
+
+  oneTask(id: string) {
+    const observable = this._httpService.oneTask(id);
+    observable.subscribe(data => this.showTask = data['data']);
+
+
   }
   }
 

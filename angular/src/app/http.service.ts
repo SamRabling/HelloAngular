@@ -13,4 +13,8 @@ export class HttpService {
     // const tempObservable = this._http.get('/tasks');
     // tempObservable.subscribe(data => console.log('This are our tasks!', data));
   }
+
+  oneTask(id: string) {
+    return this._http.get(`/tasks/${id}`);
+  }
 }

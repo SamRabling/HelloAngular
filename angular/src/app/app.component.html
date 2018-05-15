@@ -12,8 +12,8 @@
 <div class="single_task">
 <h5 *ngIf= "showTask['title']"> {{showTask.title}}</h5>
 <p *ngIf= "showTask['description']"> {{showTask.description}}
-  <button (click)="editTask(showTask['_id'])">Edit</button>
-  <button (click)="deleteTask(showTask['_id'])">Delete</button>
+  <button (click)="editTask(showTask._id)">Edit</button>
+  <button (click)="deleteTask(showTask._id)">Delete</button>
 </p>
 
 </div>
@@ -28,7 +28,6 @@
 
  <h3>Edit a Task</h3>
 <form (submit)="editTask()">
-  <p> {{ newTask | json }}</p>
   Task Title:
   <input type="text" name="showTask.title" [(ngModel)]="showTask.title" value="{{showTask.title}}" /> Task Description:
   <input type="text" name="showTask.description" [(ngModel)]="showTask.description" value="{{showTask.description}}" />

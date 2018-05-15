@@ -9,6 +9,11 @@
 </ul>
 <h5 *ngIf= "showTask['title']"> {{showTask.title}}</h5>
 <p *ngIf= "showTask['description']"> {{showTask.description}}</p>
-
+<form (submit) = "onSubmit('create')">
+  <p> {{ newTask | json }}</p>
+  Task Title:<input type="text" name="newTask.title" [(ngModel)]= "newTask.title" />
+  Task Description:<input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
+  <input type="submit" value="Create Task" />
+</form>
 
 

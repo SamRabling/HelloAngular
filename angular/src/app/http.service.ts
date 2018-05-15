@@ -8,7 +8,6 @@ export class HttpService {
   constructor(private _http: HttpClient) {
     this.getTasks();
   }
-
   getTasks() {
     return this._http.get('/tasks');
     // const tempObservable = this._http.get('/tasks');

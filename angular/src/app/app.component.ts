@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
-});
+})
 
 export class AppComponent implements OnInit {
   title = 'app';
@@ -26,7 +26,29 @@ export class AppComponent implements OnInit {
   oneTask(id: string) {
     const observable = this._httpService.oneTask(id);
     observable.subscribe(data => this.showTask = data['data']);
+  }
 
+  addTask() {
+    const observable = this._httpService.addTask(this.newTask);
+    observable.subscribe(data => {
+      console.log('new task', data);
+      this.newTask = { title: '', description: '' };
+      this.tasksFromService();
+    });
+  }
+
+  editTask(id: string) {
+    const observable = this._httpService.editTask(this.showTask);
+    observable.subscribe(data => {
+      console.log('updated task', data);
+      this.showTask = {title: '', description: ''};
+      this.tasksFromService();
+    });
+  }
+
+  deleteTask(id: string) {
+    const observable = this._httpService.deleteTask(id);
+    observable.subscribe(data => this.deleteTask = data['data']);
   }
 
   ngOnInit() {
@@ -34,11 +56,7 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    const observable = this._httpService.addTask(this.newTask);
-    observable.subscribe(data => {
-    console.log('new task', data);
-      this.newTask = { title: '', description: '' };
-    });
+
   }
 }
 

@@ -4,16 +4,34 @@
 </div>
 <h2>All the tasks:</h2>
 <button (click)="tasksFromService()" >Get All Tasks</button>
+
 <ul>
   <li *ngFor = "let task of tasks"> {{task["title"]}}: {{task["description"]}} <button (click)="oneTask(task._id)">Show</button></li>
 </ul>
+
+<div class="single_task">
 <h5 *ngIf= "showTask['title']"> {{showTask.title}}</h5>
 <p *ngIf= "showTask['description']"> {{showTask.description}}</p>
-<form (submit) = "onSubmit('create')">
+<button (click)="editTask(task._id)">Edit</button>
+<button (click)="deleteTask(task._id)">Delete</button>
+</div>
+
+<h2>Create a New Task</h2>
+<form (submit) = "onSubmit('create()')">
   <p> {{ newTask | json }}</p>
   Task Title:<input type="text" name="newTask.title" [(ngModel)]= "newTask.title" />
   Task Description:<input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
   <input type="submit" value="Create Task" />
 </form>
+
+ <h3>Edit a Task</h3>
+<form (submit)="onSubmit('create()')">
+  <p> {{ newTask | json }}</p>
+  Task Title:
+  <input type="text" name="newTask.title" [(ngModel)]="editTask.title" value="{{editTask.title}}" /> Task Description:
+  <input type="text" name="newTask.description" [(ngModel)]="editTask.description" value="{{editTask.description}}" />
+  <input type="submit" value="Create Task" />
+</form>
+
 
 

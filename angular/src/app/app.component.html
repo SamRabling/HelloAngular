@@ -13,11 +13,11 @@
 <h5 *ngIf= "showTask['title']"> {{showTask.title}}</h5>
 <p *ngIf= "showTask['description']"> {{showTask.description}}</p>
 <button (click)="editTask(task._id)">Edit</button>
-<button (click)="deleteTask(task._id)">Delete</button>
+<button (click)="deletedTask(task._id)">Delete</button>
 </div>
 
 <h2>Create a New Task</h2>
-<form (submit) = "onSubmit('create()')">
+<form (submit) = "onSubmit()">
   <p> {{ newTask | json }}</p>
   Task Title:<input type="text" name="newTask.title" [(ngModel)]= "newTask.title" />
   Task Description:<input type="text" name="newTask.description" [(ngModel)]="newTask.description" />

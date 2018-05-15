@@ -47,17 +47,17 @@ export class AppComponent implements OnInit {
   }
 
   deleteTask(id: string) {
-    const observable = this._httpService.deleteTask(id);
-    observable.subscribe(data => this.deleteTask = data['data']);
+    const observable = this._httpService.deleteTask(this.showTask);
+    observable.subscribe(data => {
+      console.log('delete task', data);
+      this.showTask = { title: '', description: '' };
+    });
   }
 
   ngOnInit() {
     this.newTask = { title: '', description: '' };
   }
 
-  onSubmit() {
-
-  }
 }
 
 

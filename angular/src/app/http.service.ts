@@ -23,11 +23,11 @@ export class HttpService {
   }
 
   editTask(updatedTask) {
-    return this._http.post(`/tasks/${id}`, updatedTask);
+    return this._http.post(`/tasks/${this.updatedTask._id}`, updatedTask);
   }
 
   deleteTask(deletedTask) {
-    return this._http.post(`/tasks/delete/${id}`, deletedTask);
+    return this._http.post(`/tasks/delete/${this.deletedTask._id}`, deletedTask);
   }
 
 }

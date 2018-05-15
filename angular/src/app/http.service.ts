@@ -18,16 +18,16 @@ export class HttpService {
     return this._http.get(`/tasks/${id}`);
   }
 
-  addTask(newtask) {
-    return this._http.post('/tasks', newtask);
+  addTask(newTask) {
+    return this._http.post('/tasks', newTask);
   }
 
-  editTask(editedTask) {
-    return this._http.post(`/tasks/${this.editedTask._id}`, editedTask);
+  editTask(updatedTask) {
+    return this._http.post(`/tasks/${updatedTask._id}`, updatedTask);
   }
 
-  deleteTask(deletedTask) {
-    return this._http.post(`/tasks/delete/${this.deletedTask._id}`, deletedTask);
+  deleteTask(destroyedTask) {
+    return this._http.post(`/tasks/delete/${destroyedTask._id}`, destroyedTask);
   }
 
 }

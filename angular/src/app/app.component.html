@@ -8,6 +8,7 @@
 <ul>
   <li *ngFor = "let task of tasks"> {{task["title"]}}: {{task["description"]}} <button (click)="oneTask(task._id)">Show</button></li>
 </ul>
+<app-tasks *ngIf="selectedTask"[taskToShow]="selectedTask"></app-tasks>
 
 <div class="single_task">
 <h5 *ngIf= "showTask['title']"> {{showTask.title}}</h5>
@@ -15,11 +16,11 @@
   <button (click)="editTask(showTask._id)">Edit</button>
   <button (click)="deleteTask(showTask._id)">Delete</button>
 </p>
-
 </div>
 
 <h2>Create a New Task</h2>
 <form (submit) = "addTask()">
+
   Task Title:<input type="text" name="newTask.title" [(ngModel)]= "newTask.title" />
   Task Description:<input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
   <input type="submit" value="Create Task" />
